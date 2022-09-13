@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+var cors = require('cors');
 const nodemailer = require('nodemailer');
 
 const app = express();
@@ -7,6 +8,7 @@ const port = 8080;
 
 app.use(express.json())
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"));
+app.use(cors());
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
